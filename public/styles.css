@@ -1,0 +1,89 @@
+:root {
+    /* secundaire palette */
+    --BGcolor:#272932;
+    --PrimaryColor:#947eb0;
+    --Secondarycolor:#519879;
+    --TextColor:#ecf8f8;
+    --Accentcolor:#fb8b24;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--BGcolor);
+    color: var(--TextColor);
+    font-family: halton, sans-serif;
+    
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: var(--TextColor);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
+  padding: 1.5em;
+
+}
+
+p {
+  font-family: halton-italic, sans-serif;
+  font-size: 1em;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  margin: 3em;
+}
+
+section  {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    flex-wrap: wrap;
+    padding: 3.5em;
+    width: 50%;
+}
+
+
+
+.temp{
+white-space: pre-wrap;
+text-align: center;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+nav {
+    border-bottom: 1px solid var(--Accentcolor);
+    & ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        & li {
+            padding: .8em;
+
+            & a {
+                color: var(--TextColor);
+                text-decoration: none;
+                font-family: halton-italic, sans-serif;
+            }
+        }
+    }
+}
