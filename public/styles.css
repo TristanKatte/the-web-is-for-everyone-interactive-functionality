@@ -110,3 +110,19 @@ nav {
   .clickable-image:hover {
     transform: scale(1.05);
   }
+
+  .vragenlijst-btn{
+    width: 100%;
+    padding: 15px;
+    background-color: var(--PrimaryColor);
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .vragenlijst-btn:hover {
+    background-color: var(--Secondarycolor);
+    color: var(--TextColor);
+  }
