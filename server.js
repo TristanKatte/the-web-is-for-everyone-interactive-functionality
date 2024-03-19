@@ -37,7 +37,7 @@ app.get('/calculator', function (request, response){
   });
 
   //Een post route
-  app.post()
+  // app.post()
 
 
 

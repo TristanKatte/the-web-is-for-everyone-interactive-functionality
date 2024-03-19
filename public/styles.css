@@ -45,11 +45,16 @@ img {
   margin: 3em;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
 section  {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-flow: column;
+    flex-flow: row;
     flex-wrap: wrap;
     padding: 3.5em;
     width: 50%;
@@ -68,6 +73,7 @@ header{
     align-items: center;
 
 }
+
 nav {
     border-bottom: 1px solid var(--Accentcolor);
     & ul {
@@ -87,3 +93,20 @@ nav {
         }
     }
 }
+
+.clickable-image {
+    height: auto;
+    cursor: pointer;
+    margin: 1.19em;
+    transition: transform 0.3s ease-in-out; 
+    border-radius: 5px;
+    filter: grayscale(0%); 
+  }
+  
+  .clickable-image.selected{
+    filter: grayscale(100%); 
+  }
+  
+  .clickable-image:hover {
+    transform: scale(1.05);
+  }
