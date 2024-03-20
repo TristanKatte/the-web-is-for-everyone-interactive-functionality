@@ -43,6 +43,7 @@ img {
   width: 300px;
   height: 300px;
   margin: 3em;
+  transition: box-shadow 0.1s;
 }
 
 main {
@@ -57,7 +58,7 @@ section  {
     flex-flow: row;
     flex-wrap: wrap;
     padding: 3.5em;
-    width: 50%;
+    width: 100%;
 }
 
 
@@ -120,9 +121,19 @@ nav {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+    font-family: halton, sans-serif;
   }
   
   .vragenlijst-btn:hover {
     background-color: var(--Secondarycolor);
     color: var(--TextColor);
   }
+
+input {
+  display: none;
+}
+
+input:checked + img {
+  box-shadow: 0 0 0 10px var(--PrimaryColor);
+  transition: box-shadow 0.11s;
+}

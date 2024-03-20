@@ -37,7 +37,14 @@ app.get('/calculator', function (request, response){
   });
 
   //Een post route
-  // app.post()
+  app.post('/vragenlijst', async (req, res) => {
+    const apiUrl = 'https://fdnd-agency.directus.app/items/hf_sdgs';
+    const response = await fetchJson(apiUrl);
+    const data = response.data || [];
+    req.session.data = data; 
+    res.render('vragenlijst', { data, chosenStakeholder: req.body.chosenItem });
+});
+
 
 
 
