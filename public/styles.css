@@ -40,8 +40,8 @@ p {
 }
 
 img {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   margin: 3em;
   transition: box-shadow 0.1s;
 }
@@ -113,15 +113,16 @@ nav {
   }
 
   .vragenlijst-btn{
-    width: 100%;
+    width: 50%;
     padding: 15px;
     background-color: var(--PrimaryColor);
     border: none;
     color: rgb(0, 0, 0);
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
     font-family: halton, sans-serif;
+    margin: 0 auto;
   }
   
   .vragenlijst-btn:hover {
