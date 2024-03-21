@@ -123,6 +123,7 @@ nav {
     transition: background-color 0.3s ease-in-out;
     font-family: halton, sans-serif;
     margin: 0 auto;
+    text-transform: uppercase;
   }
   
   .vragenlijst-btn:hover {
@@ -138,3 +139,4 @@ input:checked + img {
   box-shadow: 0 0 0 10px var(--PrimaryColor);
   transition: box-shadow 0.11s;
 }
+

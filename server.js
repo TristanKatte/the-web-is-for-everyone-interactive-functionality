@@ -18,14 +18,28 @@ app.use(express.static('public'))
 
 app.use(express.urlencoded({ extended: true }))
 
+// Stel het basis endpoint in
+const apiUrl = 'https://fdnd-agency.directus.app/items'
+
+const sdgData = await fetchJson(apiUrl + '/hf_sdgs')
+const stakeholdersData = await fetchJson(apiUrl + '/hf_stakeholders')
+const scoresData = await fetchJson(apiUrl + '/hf_scores')
+const companiesData = await fetchJson(apiUrl + '/hf_companies/1')
+
+console.log(companiesData.data.name)
+
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
-  // Render index.ejs uit de views map
-  response.render('index');
-});
+  response.render('index', {
+      sdg: sdgData.data,
+      stakeholder: stakeholdersData.data,
+      score: scoresData.data,
+      companie: companiesData.data
+})
+})
 
-app.get('/vragen', function (request, response){
-response.render ('vragen');
+app.get('/vragenlijst', function (request, response){
+response.render ('vragenlijst', {stakeholders: stakeholdersData.data });
 });
 
 app.get('/calculator', function (request, response){
@@ -36,14 +50,18 @@ app.get('/calculator', function (request, response){
 	});
   });
 
-  //Een post route
-  app.post('/vragenlijst', async (req, res) => {
-    const apiUrl = 'https://fdnd-agency.directus.app/items/hf_sdgs';
-    const response = await fetchJson(apiUrl);
-    const data = response.data || [];
-    req.session.data = data; 
-    res.render('vragenlijst', { data, chosenStakeholder: req.body.chosenItem });
+  // POST route for "/vragen"
+app.post('/vragenlijst', function (request, response) {
+  const question = request.body.question;
+
+  // Process the question here, e.g., save it to a database or display it
+  console.log(`Received question: ${question}`);
+
+  // After processing, redirect back to the vragenlijst page
+  response.redirect('/vragenlijst');
 });
+
+
 
 
 
