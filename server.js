@@ -39,6 +39,7 @@ app.get('/', function (request, response) {
 })
 
 app.get('/vragenlijst', function (request, response){
+  
 response.render ('vragenlijst', {stakeholders: stakeholdersData.data });
 });
 
