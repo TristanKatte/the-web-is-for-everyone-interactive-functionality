@@ -38,34 +38,65 @@ app.get('/', function (request, response) {
 })
 })
 
-app.get('/vragenlijst', function (request, response){
-  
-response.render ('vragenlijst', {stakeholders: stakeholdersData.data });
-});
-
 app.get('/calculator', function (request, response){
 
-  fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs').then((sdgDataUitDeAPI) => {
-		response.render('calculator', {sdgs: sdgDataUitDeAPI.data });
+    fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs').then((sdgDataUitDeAPI) => {
+		  response.render('calculator', {sdgs: sdgDataUitDeAPI.data });
     
 	});
   });
 
-  // POST route for "/vragen"
-app.post('/vragenlijst', function (request, response) {
-  const question = request.body.question;
+  app.get('/stakeholder', function (request, response){
+    fetchJson('https://fdnd-agency.directus.app/items/hf_stakeholders').then((stakeholderDataUitDeAPI) => {
+      response.render('stakeholder', {stakeholders: stakeholderDataUitDeAPI.data});
+    });
+    });
 
-  // Process the question here, e.g., save it to a database or display it
-  console.log(`Received question: ${question}`);
+  app.get('/SDG', function (request, response){
+    fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs').then((sdgDataUitDeAPI) => {
+      response.render('SDG', {sdgs: sdgDataUitDeAPI.data});
+    });
+    });
+  
+  
 
-  // After processing, redirect back to the vragenlijst page
-  response.redirect('/vragenlijst');
+// Render stakeholder page
+app.post('/stakeholder', async (req, res) => {
+  const apiUrl = 'https://fdnd-agency.directus.app/items/hf_stakeholders';
+  const response = await fetchJson(apiUrl);
+  const data = response.data || [];
+  res.render('stakeholder');
 });
 
+// Handle clicked images for SDG
+app.post('/ClickedImagesSDG', (req, res) => {
+  const { clickedImages } = req.body;
+  req.session.clickedImages = clickedImages; // Store clickedImages in session
+  res.json({ success: true });
+});
 
+// Render questionnaire page
+// app.post('/vragenlijst', async (req, res) => {
+//   res.redirect('/'); 
+// });
 
+// Handle questionnaire page GET request
+app.get('/vragenlijst', async (req, res) => {
+  const apiUrl = 'https://fdnd-agency.directus.app/items/hf_sdgs';
+  const response = await fetchJson(apiUrl);
+  const data = response.data || [];
+  const clickedImages = req.session.clickedImages || [];
+  res.render('vragenlijst', {data, clickedImages });
+});
 
-
+// Render SDG page
+app.post('/SDG', async (req, res) => {
+  const apiUrl = 'https://fdnd-agency.directus.app/items/hf_sdgs';
+  const response = await fetchJson(apiUrl);
+  const data = response.data || [];
+  req.session.data = data; 
+  res.render('SDG', {data, chosenStakeholder: req.body.chosenItem });
+});
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)

@@ -53,7 +53,7 @@ main {
 
 section  {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     flex-flow: row;
     flex-wrap: wrap;
@@ -130,6 +130,21 @@ nav {
     background-color: var(--Secondarycolor);
     color: var(--TextColor);
   }
+
+.stakeholder-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--PrimaryColor);
+  border: none;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-family: halton, sans-serif;
+  margin: 0 auto;
+  text-transform: uppercase;
+
+}
 
 input {
   display: none;
