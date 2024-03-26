@@ -18,6 +18,7 @@ body {
     color: var(--TextColor);
     font-family: halton, sans-serif;
     
+    
 }
 
 h1 {
@@ -49,6 +50,8 @@ img {
 main {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-flow: column;
 }
 
 section  {
@@ -61,18 +64,10 @@ section  {
     width: 100%;
 }
 
-
-
-.temp{
-white-space: pre-wrap;
-text-align: center;
-}
-
 header{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 nav {
@@ -143,10 +138,20 @@ nav {
   font-family: halton, sans-serif;
   margin: 0 auto;
   text-transform: uppercase;
-
 }
 
-input {
+
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--Accentcolor);
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type='checkbox'] {
   display: none;
 }
 
