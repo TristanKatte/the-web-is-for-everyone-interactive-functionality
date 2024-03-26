@@ -38,6 +38,7 @@ app.get('/', function (request, response) {
 })
 })
 
+//GET route voor de calculator
 app.get('/calculator', function (request, response){
 
     fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs').then((sdgDataUitDeAPI) => {
@@ -46,12 +47,14 @@ app.get('/calculator', function (request, response){
 	});
   });
 
+  //GET route voor de stakeholders
   app.get('/stakeholder', function (request, response){
     fetchJson('https://fdnd-agency.directus.app/items/hf_stakeholders').then((stakeholderDataUitDeAPI) => {
       response.render('stakeholder', {stakeholders: stakeholderDataUitDeAPI.data});
     });
     });
 
+    //GET route voor de sdgs
   app.get('/SDG', function (request, response){
     fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs').then((sdgDataUitDeAPI) => {
       response.render('SDG', {sdgs: sdgDataUitDeAPI.data});
