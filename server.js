@@ -60,8 +60,17 @@ app.get('/calculator', function (request, response){
       response.render('SDG', {sdgs: sdgDataUitDeAPI.data});
     });
     });
+
+    app.get('/vragenlijst', function (request, response){
+      fetchJson('https://fdnd-agency.directus.app/items/hf_companies').then((companyDataUitDeAPI) =>{
+        response.render('vragenlijst', {companies: companyDataUitDeAPI.data});
+      });
+      });
+      
+    
   
-  
+
+/***** post routes *****/
 
 // Render stakeholder page
 app.post('/stakeholder', async (req, res) => {

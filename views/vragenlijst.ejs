@@ -1,31 +1,9 @@
 <%- include('./partials/head') %>
 <h1>Kan je per SDG op een schaal van 1/5 aangeven hoe groot de <span>positieve</span> bijdrage is?</h1>
   <h2>Denk hier heel zorgvuldig over na, dit is belangrijk voor de uiteindelijke uitslag.</h2>
-    <% if (data && data.length > 0) { %>
-      <% clickedImages.forEach(index => { %>
-        <% const currentItem = data[index]; %>
-        <div class="item">
-          <img src="https://fdnd-agency.directus.app/assets/<%= currentItem.icon %>" width="100">
-          <p><strong>Description:</strong> <%= currentItem.description %></p>
-          <label for="rating_<%= currentItem.id %>">Rate from 1 to 5:</label>
-          <select id="rating_<%= currentItem.id %>" name="<%= currentItem.id %>_rating">
-                <option value="-5">-5</option>
-                <option value="-4">-4</option>
-                <option value="-3">-3</option>
-                <option value="-2">-2</option>
-                <option value="-1">-1</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
-      <% }); %>
-    <% } else { %>
+ 
       <p>No data available</p>
-    <% } %>
+    
     <form action="/dashboard" method="post">
   <button class="vragenlijst-btn">Submit</button>
   </form>
