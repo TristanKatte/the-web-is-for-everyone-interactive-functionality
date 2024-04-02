@@ -31,10 +31,10 @@ console.log(companiesData.data.name)
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   response.render('index', {
-      sdg: sdgData.data,
-      stakeholder: stakeholdersData.data,
-      score: scoresData.data,
-      companie: companiesData.data
+      sdg: sdg.data,
+      stakeholder: stakeholders.data,
+      score: scores.data,
+      company: companies.data
 })
 })
 
@@ -45,6 +45,12 @@ app.get('/calculator', function (request, response){
 		  response.render('calculator', {sdgs: sdgDataUitDeAPI.data });
     
 	});
+  });
+
+  app.get('/bedrijf', function (request, response) {
+    fetchJson('https://fdnd-agency.directus.app/items/hf_companies').then((CompanyDataUitDeAPI) => {
+      response.render('bedrijf', {companies: CompanyDataUitDeAPI.data});
+    });
   });
 
   //GET route voor de stakeholders
@@ -66,6 +72,16 @@ app.get('/calculator', function (request, response){
         response.render('vragenlijst', {companies: companyDataUitDeAPI.data});
       });
       });
+
+    // Handle questionnaire page GET request
+  app.get('/vragenlijst', async (req, res) => {
+      const apiUrl = 'https://fdnd-agency.directus.app/items/hf_sdgs';
+      const response = await fetchJson(apiUrl);
+      const data = response.data || [];
+      const clickedImages = req.session.clickedImages || [];
+      res.render('vragenlijst', {data, clickedImages });
+    });
+
       
     
   
@@ -87,19 +103,13 @@ app.post('/ClickedImagesSDG', (req, res) => {
   res.json({ success: true });
 });
 
-// Render questionnaire page
-// app.post('/vragenlijst', async (req, res) => {
-//   res.redirect('/'); 
-// });
-
-// Handle questionnaire page GET request
-app.get('/vragenlijst', async (req, res) => {
-  const apiUrl = 'https://fdnd-agency.directus.app/items/hf_sdgs';
-  const response = await fetchJson(apiUrl);
-  const data = response.data || [];
-  const clickedImages = req.session.clickedImages || [];
-  res.render('vragenlijst', {data, clickedImages });
+// Render company page
+app.post('/bedrijf', async (req, res) => {
+  console.log(req.body.chosenItem);
 });
+
+
+
 
 // Render SDG page
 app.post('/SDG', async (req, res) => {

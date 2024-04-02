@@ -160,3 +160,19 @@ input:checked + img {
   transition: box-shadow 0.11s;
 }
 
+input[type='submit'] {
+  width: 100%;
+  padding: 0.5em;
+  font-family: halton, sans-serif;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 2px solid var(--Accentcolor);
+  background-color: var(--BGcolor);
+  color: var(--TextColor);
+}
+
+input[type='submit']:hover {
+  background-color: var(--Secondarycolor);
+  color: var(--TextColor);
+  cursor: pointer;
+}
