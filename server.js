@@ -114,6 +114,17 @@ app.post('/vragenlijst', function (request, response){
   response.render('vragenlijst')
 });
 
+app.post('/vragenlijst', (req, res) => { //post route naar / met response request
+  console.log(req.body); // log request body in console
+  const sdgId = req.body.sdgs; // haal sdg uit request body
+  if (sdgId) {
+      res.redirect(`/calculator?sdgIds=${sdgId}`); // redirect naar scoreboard net de sdgId
+  } else {
+      res.redirect('/?error=true'); // redirect naar home met error
+  }
+});
+
+
 
 
 
