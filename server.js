@@ -110,7 +110,9 @@ app.post('/ClickedImagesSDG', (req, res) => {
 });
 
 // Render company page
-
+app.post('/vragenlijst', function (request, response){
+  response.render('vragenlijst')
+});
 
 
 
