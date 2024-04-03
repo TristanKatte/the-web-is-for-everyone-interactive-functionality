@@ -31,12 +31,18 @@ console.log(companiesData.data.name)
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   response.render('index', {
-      sdg: sdg.data,
-      stakeholder: stakeholders.data,
-      score: scores.data,
-      company: companies.data
-})
-})
+      sdg: sdgData.data,
+      stakeholder: stakeholdersData.data,
+      score: scoresData.data,
+      company: companiesData.data
+});
+});
+
+app.get('/dashboard', function (request, response) {
+  response.render('dashboard', {
+    sdg: sdgData.data
+  });
+});
 
 //GET route voor de calculator
 app.get('/calculator', function (request, response){
@@ -104,9 +110,7 @@ app.post('/ClickedImagesSDG', (req, res) => {
 });
 
 // Render company page
-app.post('/bedrijf', async (req, res) => {
-  console.log(req.body.chosenItem);
-});
+
 
 
 
