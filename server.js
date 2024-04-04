@@ -31,7 +31,7 @@ console.log(companiesData.data.name)
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   response.render('index', {
-      sdg: sdgData.data,
+      sdgs: sdgData.data,
       stakeholder: stakeholdersData.data,
       score: scoresData.data,
       company: companiesData.data
@@ -40,7 +40,7 @@ app.get('/', function (request, response) {
 
 app.get('/dashboard', function (request, response) {
   response.render('dashboard', {
-    sdg: sdgData.data
+    sdgs: sdgData.data
   });
 });
 
