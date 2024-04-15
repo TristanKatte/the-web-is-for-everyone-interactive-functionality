@@ -156,9 +156,9 @@ input[type="text"], input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type='checkbox'] {
+/* input[type='checkbox'] {
   display: none;
-}
+} */
 
 input:checked + img {
   box-shadow: 0 0 0 10px var(--PrimaryColor);
